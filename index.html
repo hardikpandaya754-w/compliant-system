@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apartment Complaint System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🏢 Sunrise Apartments – Complaint Desk</h1>
+  <div class="tabs">
+    <button id="tabRes" class="on">Resident</button>
+    <button id="tabAdm">Admin</button>
+  </div>
+</header>
+
+<main>
+  <!-- RESIDENT VIEW -->
+  <section id="resView">
+    <div class="card">
+      <h2>Raise a complaint</h2>
+      <form id="cForm" onsubmit="return false">
+        <div class="grid">
+          <div><label>Name</label><input id="name" maxlength="40"></div>
+          <div><label>Flat No.</label><input id="flat" placeholder="e.g. B-204" maxlength="10"></div>
+          <div><label>Category</label>
+            <select id="cat"><option>Plumbing</option><option>Electrical</option><option>Lift</option><option>Parking</option><option>Cleanliness</option><option>Security</option><option>Noise</option><option>Other</option></select></div>
+          <div><label>Priority</label>
+            <select id="pri"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+        </div>
+        <label style="margin-top:12px">Description</label>
+        <textarea id="desc" maxlength="300"></textarea>
+        <button class="btn" id="submit" type="button">Submit complaint</button>
+        <div class="msg" id="ok"></div>
+      </form>
+    </div>
+    <div class="card">
+      <h2>Track my complaints</h2>
+      <div class="filters"><input id="myFlat" placeholder="Enter your flat no. (e.g. B-204)"></div>
+      <div id="myList"></div>
+    </div>
+  </section>
+
+  <!-- ADMIN VIEW -->
+  <section id="admView" class="hide">
+    <div id="login" class="card">
+      <h2>Admin login</h2>
+      <label>PIN (demo PIN: 1234)</label>
+      <input id="pin" type="password" style="max-width:200px">
+      <br><button class="btn" id="loginBtn" type="button">Login</button>
+      <div class="msg" id="bad" style="background:var(--bad)">Wrong PIN</div>
+    </div>
+    <div id="panel" class="hide">
+      <div class="stats">
+        <div class="stat"><b id="sTotal">0</b><span>Total</span></div>
+        <div class="stat"><b id="sPending">0</b><span>Pending</span></div>
+        <div class="stat"><b id="sProg">0</b><span>In progress</span></div>
+        <div class="stat"><b id="sRes">0</b><span>Resolved</span></div>
+      </div>
+      <div class="card">
+        <h2>All complaints</h2>
+        <div class="filters">
+          <input id="q" placeholder="Search name, flat, text…">
+          <select id="fStatus"><option value="">All status</option><option>Pending</option><option>In Progress</option><option>Resolved</option></select>
+          <select id="fCat"><option value="">All categories</option><option>Plumbing</option><option>Electrical</option><option>Lift</option><option>Parking</option><option>Cleanliness</option><option>Security</option><option>Noise</option><option>Other</option></select>
+        </div>
+        <div id="admList"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
